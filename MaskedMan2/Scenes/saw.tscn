@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://buxxmg7ir1snu"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/saw.gd" id="1_lcx8j"]
+[ext_resource type="Texture2D" uid="uid://5endkdgcwaxn" path="res://Assets/Maskman assets pack/Free/Traps/Saw/On (38x38).png" id="1_u2aha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1qe1"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtim5"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7je6p"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fme3x"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(114, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylphs"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(152, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqatt"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(190, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvky0"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(228, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alab5"]
+atlas = ExtResource("1_u2aha")
+region = Rect2(266, 0, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kv17p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1qe1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtim5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7je6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fme3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylphs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqatt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvky0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alab5")
+}],
+"loop": true,
+"name": &"Saw",
+"speed": 50.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bu008"]
+radius = 44.0454
+
+[node name="Saw" type="Area2D" groups=["obs"]]
+script = ExtResource("1_lcx8j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_kv17p")
+animation = &"Saw"
+autoplay = "Saw"
+frame_progress = 0.465537
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bu008")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

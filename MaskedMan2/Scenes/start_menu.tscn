@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://llb4hpwbc3is"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/start_menu.gd" id="1_68cxi"]
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://Assets/pixel_rpg.ttf" id="1_gsv32"]
+[ext_resource type="StyleBox" uid="uid://cplfqjj2oqcwr" path="res://Scenes/start_menu.tres" id="3_gd61n"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqc62"]
+bg_color = Color(0.101961, 0.247059, 0.101961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 14
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t3i38"]
+bg_color = Color(0.235294, 0.482353, 0.0156863, 0.560784)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v3ndb"]
+bg_color = Color(0.0509804, 0.0117647, 0.00392157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmloa"]
+bg_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Start_Menu" type="CanvasLayer"]
+script = ExtResource("1_68cxi")
+
+[node name="GamePanel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -129.5
+offset_right = 135.0
+offset_bottom = 38.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bqc62")
+
+[node name="Title 1" type="Label" parent="."]
+offset_left = 252.0
+offset_top = 258.0
+offset_right = 399.0
+offset_bottom = 284.0
+theme_override_fonts/font = ExtResource("1_gsv32")
+text = "MaskedDude 2"
+
+[node name="Title 2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -82.5
+offset_right = 157.0
+offset_bottom = -16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gsv32")
+theme_override_font_sizes/font_size = 36
+text = "FlappyMan"
+
+[node name="StartButton" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -25.5
+offset_right = 49.0
+offset_bottom = 16.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_gsv32")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = ExtResource("3_gd61n")
+theme_override_styles/hover = ExtResource("3_gd61n")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t3i38")
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="."]
+offset_left = 394.0
+offset_top = 349.0
+offset_right = 451.0
+offset_bottom = 370.0
+theme_override_fonts/font = ExtResource("1_gsv32")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_v3ndb")
+text = "Options"
+
+[node name="HighScoreButton" type="Button" parent="."]
+offset_left = 395.0
+offset_top = 376.0
+offset_right = 451.0
+offset_bottom = 393.0
+theme_override_fonts/font = ExtResource("1_gsv32")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxFlat_fmloa")
+text = "HighScore"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="HighScoreButton" to="." method="_on_high_score_button_pressed"]

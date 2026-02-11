@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://civc4nra3ivr5"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/ground.gd" id="1_jwgw3"]
+[ext_resource type="Texture2D" uid="uid://dbir8jxis7xim" path="res://Assets/ground (G).png" id="1_p6pw1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbibb"]
+size = Vector2(1325.25, 98.5)
+
+[node name="Ground" type="Area2D"]
+script = ExtResource("1_jwgw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.560784, 0.568627, 1)
+texture_filter = 1
+position = Vector2(661.75, 702.5)
+scale = Vector2(0.574002, 1.11458)
+texture = ExtResource("1_p6pw1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(663, 705)
+shape = SubResource("RectangleShape2D_hbibb")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

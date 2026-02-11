@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://d5ryldlsk4xk"]
+
+[ext_resource type="Texture2D" uid="uid://ee3htdr4hhpd" path="res://Assets/Jungle Asset Pack/Forest assests/PNG/Default size/foliagePack_022.png" id="1_k62ii"]
+[ext_resource type="Script" path="res://Scenes/Game Scripts/tree.gd" id="1_p70bt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn772"]
+size = Vector2(50, 1431)
+
+[node name="Tree" type="Area2D" groups=["obs"]]
+position = Vector2(1, 0)
+script = ExtResource("1_p70bt")
+
+[node name="tree_sprite" type="Sprite2D" parent="."]
+modulate = Color(0.145098, 0.439216, 0.305882, 1)
+texture_filter = 1
+position = Vector2(-12, -64)
+scale = Vector2(2.33929, 3.12583)
+texture = ExtResource("1_k62ii")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-13, -65)
+scale = Vector2(2.39286, 3.13571)
+polygon = PackedVector2Array(-6.68656, -67.6083, -2.50746, -67.6083, 2.50746, -51.344, 6.68656, -61.2301, 9.61193, -60.5923, 7.9403, -42.7335, 15.8806, -48.155, 17.1343, -46.2415, 9.19402, -35.7176, 9.19402, -8.29158, 20.4776, -13.3941, 21.7313, -10.5239, 9.61193, -0.318907, 9.19402, 20.729, 13.3731, 69.2028, -8.77611, 69.2028, -5.43283, 42.4146, -5.43283, 28.3827, -12.5373, 21.0479, -20.0597, 15.6264, -17.5522, 11.4807, -4.59701, 21.6857, -3.34328, 3.50798, -3.34328, -20.4101, -11.2836, -30.934, -10.0298, -33.8041, -2.50746, -27.426, -2.92537, -44.9659)
+
+[node name="score area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="score area"]
+position = Vector2(73, -563.5)
+shape = SubResource("RectangleShape2D_vn772")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="score area" to="." method="_on_score_area_body_entered"]

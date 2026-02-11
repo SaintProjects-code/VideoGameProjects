@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf54rynrik0ko"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/main_menu.gd" id="1_nlsu8"]
+[ext_resource type="PackedScene" uid="uid://cs7x6r48p51ea" path="res://Scenes/p_background.tscn" id="1_nr0nn"]
+[ext_resource type="PackedScene" uid="uid://llb4hpwbc3is" path="res://Scenes/start_menu.tscn" id="2_p4enh"]
+[ext_resource type="PackedScene" uid="uid://b1qth2hwikhuq" path="res://Scenes/main.tscn" id="2_tew7v"]
+
+[node name="Main_Menu" type="Node"]
+script = ExtResource("1_nlsu8")
+main_game = ExtResource("2_tew7v")
+
+[node name="PBackground" parent="." instance=ExtResource("1_nr0nn")]
+
+[node name="Start_Menu" parent="." instance=ExtResource("2_p4enh")]
+
+[node name="MaskedDudeTimer" type="Timer" parent="."]
+
+[connection signal="highscore" from="Start_Menu" to="." method="_on_start_menu_highscore"]
+[connection signal="options" from="Start_Menu" to="." method="_on_start_menu_options"]
+[connection signal="start" from="Start_Menu" to="." method="_on_start_menu_start"]
+[connection signal="timeout" from="MaskedDudeTimer" to="." method="_on_masked_dude_timer_timeout"]

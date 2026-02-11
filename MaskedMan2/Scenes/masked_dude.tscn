@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=3 uid="uid://b8kiwh6wv5l1p"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/masked_dude.gd" id="1_75f0m"]
+[ext_resource type="Texture2D" uid="uid://ns8bdtdln1ml" path="res://Assets/Maskman assets pack/Free/Main Characters/Mask Dude/Jump (32x32).png" id="1_jtl1n"]
+[ext_resource type="Texture2D" uid="uid://cgd2bj2j4xx7m" path="res://Assets/Maskman assets pack/Free/Main Characters/Mask Dude/Fall (32x32).png" id="2_3yrkt"]
+[ext_resource type="Texture2D" uid="uid://d2k510udcccku" path="res://Assets/Maskman assets pack/Free/Main Characters/Mask Dude/Idle (32x32).png" id="3_rp5qj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyiul"]
+atlas = ExtResource("2_3yrkt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a643"]
+atlas = ExtResource("1_jtl1n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3r4x"]
+atlas = ExtResource("2_3yrkt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80q6c"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyovc"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kd6bo"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5bk1"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q32f3"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu8ym"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b13og"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3tv0"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jtpg"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjtdk"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cj81x"]
+atlas = ExtResource("3_rp5qj")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_isjpl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyiul")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a643")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3r4x")
+}],
+"loop": true,
+"name": &"Flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80q6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyovc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kd6bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5bk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q32f3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu8ym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b13og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3tv0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jtpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjtdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cj81x")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 30.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_62m74"]
+radius = 10.2
+
+[node name="MaskedDude" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_75f0m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_isjpl")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.867705
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1.6)
+shape = SubResource("CapsuleShape2D_62m74")
+
+[node name="jumptimer" type="Timer" parent="."]
+wait_time = 0.35
+
+[connection signal="timeout" from="jumptimer" to="." method="_on_jumptimer_timeout"]

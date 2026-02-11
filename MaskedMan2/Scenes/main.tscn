@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://b1qth2hwikhuq"]
+
+[ext_resource type="Script" path="res://Scenes/Game Scripts/main.gd" id="1_qxabr"]
+[ext_resource type="PackedScene" uid="uid://cs7x6r48p51ea" path="res://Scenes/p_background.tscn" id="1_w11by"]
+[ext_resource type="PackedScene" uid="uid://b8kiwh6wv5l1p" path="res://Scenes/masked_dude.tscn" id="3_5o6pp"]
+[ext_resource type="PackedScene" uid="uid://buxxmg7ir1snu" path="res://Scenes/saw.tscn" id="3_m0l56"]
+[ext_resource type="PackedScene" uid="uid://civc4nra3ivr5" path="res://Scenes/ground.tscn" id="4_hhmhj"]
+[ext_resource type="PackedScene" uid="uid://ia1r08d10q6a" path="res://Scenes/platform.tscn" id="4_xmgh6"]
+[ext_resource type="PackedScene" uid="uid://d5ryldlsk4xk" path="res://Scenes/tree.tscn" id="5_ub8bn"]
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://Assets/pixel_rpg.ttf" id="6_sdmhr"]
+[ext_resource type="PackedScene" uid="uid://bfickiwhd4nqa" path="res://Scenes/game_over_hub.tscn" id="7_h12w4"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_qxabr")
+tree_scene = ExtResource("5_ub8bn")
+saw_scene = ExtResource("3_m0l56")
+platform_scene = ExtResource("4_xmgh6")
+
+[node name="PBackground" parent="." instance=ExtResource("1_w11by")]
+
+[node name="MaskedDude" parent="." instance=ExtResource("3_5o6pp")]
+z_index = 1
+
+[node name="Ground" parent="." instance=ExtResource("4_hhmhj")]
+z_index = 1
+position = Vector2(1, -2)
+
+[node name="treetimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="Game_over_hub" parent="." instance=ExtResource("7_h12w4")]
+
+[node name="Hub" type="CanvasLayer" parent="."]
+
+[node name="Score_label" type="Label" parent="Hub"]
+offset_left = 57.0
+offset_top = 25.0
+offset_right = 273.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("6_sdmhr")
+theme_override_font_sizes/font_size = 34
+text = "Score: "
+
+[node name="start_label" type="Label" parent="Hub"]
+offset_left = 126.0
+offset_top = 296.0
+offset_right = 579.0
+offset_bottom = 349.0
+theme_override_fonts/font = ExtResource("6_sdmhr")
+theme_override_font_sizes/font_size = 49
+text = "Click to start "
+
+[connection signal="hit" from="Ground" to="." method="_on_ground_hit"]
+[connection signal="timeout" from="treetimer" to="." method="_on_treetimer_timeout"]
+[connection signal="restart" from="Game_over_hub" to="." method="_on_game_over_hub_restart"]
