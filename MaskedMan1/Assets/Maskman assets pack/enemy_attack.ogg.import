@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://de2ryat1pxq6"
+path="res://.godot/imported/enemy_attack.ogg-cd7bae145a39c21af36b89fc421d84b5.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Maskman assets pack/enemy_attack.ogg"
+dest_files=["res://.godot/imported/enemy_attack.ogg-cd7bae145a39c21af36b89fc421d84b5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
