@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdp3fo6atbjv1"]
+
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://Assets/Maskman assets pack/pixel_rpg.ttf" id="1_c8av2"]
+[ext_resource type="Script" path="res://Scenes/Scenes scripts/game_over_hub.gd" id="1_igv23"]
+[ext_resource type="StyleBox" uid="uid://xtepkinuybp" path="res://Scenes/restart_button_theme.tres" id="2_groww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bi6bg"]
+bg_color = Color(0.0117647, 0.4, 0.701961, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 8
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cshqx"]
+bg_color = Color(0, 0.00784314, 0.0117647, 0.796078)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wuhfy"]
+bg_color = Color(0, 0.0901961, 0.117647, 0.384314)
+
+[node name="GameOverHub" type="CanvasLayer"]
+script = ExtResource("1_igv23")
+
+[node name="Gameover Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -107.0
+offset_right = 154.0
+offset_bottom = 107.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bi6bg")
+
+[node name="Gameover Label" type="Label" parent="."]
+offset_left = 167.0
+offset_top = 266.0
+offset_right = 470.0
+offset_bottom = 354.0
+theme_override_fonts/font = ExtResource("1_c8av2")
+theme_override_font_sizes/font_size = 16
+text = "        Game Over 
+     Masked Dude Wins!"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 199.0
+offset_top = 350.0
+offset_right = 455.0
+offset_bottom = 417.0
+theme_override_fonts/font = ExtResource("1_c8av2")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/normal = ExtResource("2_groww")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cshqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wuhfy")
+text = "Play Again"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

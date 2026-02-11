@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dub7f022pacsr"]
+
+[ext_resource type="Texture2D" uid="uid://bhmqdxipsxp6j" path="res://Assets/vecteezy_cartoon-pond-with-cattails-at-night_21494008.jpg" id="1_ddfj1"]
+[ext_resource type="Script" path="res://Scenes/Scenes scripts/main_menu.gd" id="1_gl6aa"]
+[ext_resource type="PackedScene" uid="uid://b2al0vv5w6css" path="res://Scenes/start_menu.tscn" id="2_jeg5n"]
+[ext_resource type="PackedScene" uid="uid://bulruw5nlmofh" path="res://Scenes/main.tscn" id="2_xfx3n"]
+
+[node name="Main_Menu" type="Node"]
+script = ExtResource("1_gl6aa")
+main = ExtResource("2_xfx3n")
+
+[node name="Backgorund" type="Sprite2D" parent="."]
+modulate = Color(0.294118, 0.768627, 0.423529, 1)
+position = Vector2(444, 348)
+scale = Vector2(0.463021, 0.996428)
+texture = ExtResource("1_ddfj1")
+
+[node name="Start_menu" parent="." instance=ExtResource("2_jeg5n")]
+
+[connection signal="start_game" from="Start_menu" to="." method="_on_start_menu_start_game"]

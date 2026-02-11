@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://d25o82aeg7t1o"]
+
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://Assets/Maskman assets pack/pixel_rpg.ttf" id="1_hwlut"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lm7oq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v264v"]
+texture = SubResource("CanvasTexture_lm7oq")
+modulate_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[node name="Hub" type="CanvasLayer"]
+
+[node name="Score_label" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_top = 11.0
+offset_right = 126.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_hwlut")
+theme_override_font_sizes/font_size = 30
+text = "Score: "
+
+[node name="Score_panel" type="Panel" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -325.0
+offset_right = 325.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_v264v")

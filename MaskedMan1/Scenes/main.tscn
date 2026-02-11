@@ -1,0 +1,121 @@
+[gd_scene load_steps=19 format=3 uid="uid://bulruw5nlmofh"]
+
+[ext_resource type="Script" path="res://Scenes/Scenes scripts/main.gd" id="1_4yq4x"]
+[ext_resource type="Texture2D" uid="uid://bksgofq3jvsxt" path="res://Assets/Common Assets/bg.png" id="1_bvejl"]
+[ext_resource type="PackedScene" uid="uid://d25o82aeg7t1o" path="res://Scenes/hub.tscn" id="2_5d5g2"]
+[ext_resource type="PackedScene" uid="uid://nugxwob5hgk8" path="res://Scenes/snake.tscn" id="2_jwegb"]
+[ext_resource type="PackedScene" uid="uid://cdp3fo6atbjv1" path="res://Scenes/game_over_hub.tscn" id="5_v2x7r"]
+[ext_resource type="Texture2D" uid="uid://qnxnpfnl1y6w" path="res://Assets/Maskman assets pack/Free/Main Characters/Mask Dude/Idle (32x32).png" id="6_047hr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_covao"]
+atlas = ExtResource("6_047hr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eks2"]
+atlas = ExtResource("6_047hr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3xcq"]
+atlas = ExtResource("6_047hr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vtbs"]
+atlas = ExtResource("6_047hr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfg8w"]
+atlas = ExtResource("6_047hr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86jd4"]
+atlas = ExtResource("6_047hr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qnw8"]
+atlas = ExtResource("6_047hr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkmvp"]
+atlas = ExtResource("6_047hr")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11yj3"]
+atlas = ExtResource("6_047hr")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8etvp"]
+atlas = ExtResource("6_047hr")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6wp2"]
+atlas = ExtResource("6_047hr")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w1h7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_covao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3eks2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3xcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vtbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfg8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86jd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qnw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkmvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11yj3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8etvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6wp2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 30.0
+}]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_4yq4x")
+snake_scene = ExtResource("2_jwegb")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.329412, 0.682353, 0.494118, 1)
+position = Vector2(500, 548)
+scale = Vector2(0.999, 0.998656)
+texture = ExtResource("1_bvejl")
+
+[node name="Hub" parent="." instance=ExtResource("2_5d5g2")]
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.09
+
+[node name="GameOverHub" parent="." instance=ExtResource("5_v2x7r")]
+visible = false
+
+[node name="masked_Dude_food" type="AnimatedSprite2D" parent="."]
+position = Vector2(21, 25)
+scale = Vector2(1.35156, 1.2461)
+sprite_frames = SubResource("SpriteFrames_w1h7i")
+animation = &"Idle"
+frame_progress = 0.876972
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="restart" from="GameOverHub" to="." method="_on_game_over_hub_restart"]

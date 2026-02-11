@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2al0vv5w6css"]
+
+[ext_resource type="FontFile" uid="uid://dskmdk146n4rq" path="res://Assets/Maskman assets pack/pixel_rpg.ttf" id="1_hkhve"]
+[ext_resource type="Script" path="res://Scenes/Scenes scripts/start_menu.gd" id="1_wqwwm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k37h3"]
+bg_color = Color(0, 0.34902, 0.168627, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 15
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gana"]
+bg_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b5u0r"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[node name="Start_menu" type="CanvasLayer"]
+script = ExtResource("1_wqwwm")
+
+[node name="game_Panel" type="Panel" parent="."]
+offset_left = 91.0
+offset_top = 223.0
+offset_right = 566.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_k37h3")
+
+[node name="game_Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.0
+offset_top = -142.0
+offset_right = 222.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_hkhve")
+theme_override_font_sizes/font_size = 26
+text = " 
+   MaskedDude 1
+
+"
+
+[node name="game_label_2" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -64.0
+offset_right = 211.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_hkhve")
+theme_override_font_sizes/font_size = 51
+text = "SnakeDude"
+
+[node name="Start_button" type="Button" parent="."]
+offset_left = 210.0
+offset_top = 355.0
+offset_right = 455.0
+offset_bottom = 437.0
+theme_override_fonts/font = ExtResource("1_hkhve")
+theme_override_font_sizes/font_size = 44
+theme_override_styles/normal = SubResource("StyleBoxFlat_0gana")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b5u0r")
+text = "Play"
+
+[connection signal="pressed" from="Start_button" to="." method="_on_start_button_pressed"]
